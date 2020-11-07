@@ -25,4 +25,7 @@ Once You have configured your environment, You are able to:
 - [NPM](https://docs.npmjs.com/)
 - [Laravel](https://laravel.com/docs/8.x)
 
+### Curious about our database structure? Check this out:
+<img src=".github/der.svg">
+
 Cya, folks!
