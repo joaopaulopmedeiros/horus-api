@@ -1,4 +1,4 @@
-# susi -api
+# susi-api
 
 ## 📗 Description
 SUSI's API. 
