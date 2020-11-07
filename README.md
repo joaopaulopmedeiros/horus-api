@@ -1,7 +1,7 @@
-# recicle-api
+# susi -api
 
 ## 📗 Description
-Recicle software's API. 
+SUSI's API. 
 
 ## 🚀 Technologies
 - [Laravel](https://laravel.com/docs/8.x)
