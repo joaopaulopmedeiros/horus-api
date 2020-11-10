@@ -38,6 +38,7 @@ Route::group([
 Route::group([
     'prefix' => 'cvlis'
 ], function ($router) {
+    Route::get('types', [TypeCvliController::class, 'index']);
     Route::post('types', [TypeCvliController::class, 'store']);
     Route::post('', [CvliController::class, 'store']);
 });
