@@ -21,7 +21,7 @@ class CreateCvlisTable extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('cvlis_types_id');
-            $table->foreign('cvlis_id')->references('id')->on('cvlis_types');
+            $table->foreign('cvlis_types_id')->references('id')->on('cvlis_types');
         });
     }
 
