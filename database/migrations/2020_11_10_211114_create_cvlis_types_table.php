@@ -16,6 +16,7 @@ class CreateCvlisTypesTable extends Migration
         Schema::create('cvlis_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image');
             $table->timestamps();
         });
     }

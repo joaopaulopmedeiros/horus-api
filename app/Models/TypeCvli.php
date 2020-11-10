@@ -18,5 +18,6 @@ class TypeCvli extends Model
      */
     protected $fillable = [
         'name',
+        'image',
     ];
 }

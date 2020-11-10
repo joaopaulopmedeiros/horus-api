@@ -17,7 +17,16 @@ class TypeCvliController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api');
+        //$this->middleware('auth:api');
+    }
+
+    public function index(){
+        try {
+            $users = TypeCvli::paginate(10);
+            return response()->json($users);
+        } catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function store(Request $request)
@@ -40,10 +49,10 @@ class TypeCvliController extends Controller
 
             $url = url(Storage::url("public/types_cvlis/{$formatName}"));
 
-            $cvli = [
+            $cvli = TypeCvli::create([
                 'name' => $data['name'],
                 'image' => $url,
-            ];
+            ]);
 
             return response()->json($cvli, 201);
         } catch (\Throwable $e) {
