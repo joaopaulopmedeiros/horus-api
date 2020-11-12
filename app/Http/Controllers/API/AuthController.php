@@ -100,7 +100,9 @@ class AuthController extends Controller
     public function user()
     {
         try {
-            return response()->json(auth('api')->user());
+            $user = auth('api')->user();
+            $user->cvlis;
+            return response()->json($user);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
