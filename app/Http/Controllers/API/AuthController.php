@@ -4,9 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -53,23 +55,43 @@ class AuthController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|between:2,100',
+                'email' => 'required|string|email|max:100|unique:users',
+                'cpf' => 'required|string|max:25|unique:users',
+                'phone' => 'required|string|max:25|unique:users',
+                'password' => 'required|string|confirmed|min:6',
+                'role' => 'required|numeric'
             ]);
 
             if($validator->fails()){
                 return response()->json($validator->errors()->toJson(), 400);
             }
 
+            DB::beginTransaction();
+
             $user = User::create(array_merge(
                 $validator->validated(),
                 ['password' => bcrypt($request->password)]
             ));
 
+            UserRole::create([
+                'users_id' => $user->id,
+                'roles_id' => $request->role,
+            ]);
+
+            DB::commit();
+
+            $credentials = $request->only(['email', 'password']);
+
+            $token = auth('api')->attempt($credentials);
+
             return response()->json([
                 'message' => 'User successfully registered',
-                'user' => $user
+                'user' => $user,
+                'token' => $token
             ], 201);
 
         } catch (ValidationException $e) {
+            DB::rollBack();
             return response()->json(['error' => $e->getMessage()], 500);
         }
 
@@ -78,7 +100,9 @@ class AuthController extends Controller
     public function user()
     {
         try {
-            return response()->json(auth('api')->user());
+            $user = auth('api')->user();
+            $user->cvlis;
+            return response()->json($user);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

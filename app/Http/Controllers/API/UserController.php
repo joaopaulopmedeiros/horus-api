@@ -63,15 +63,18 @@ class UserController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'string|between:2,100',
+                'email' => 'string|email|max:100|unique:users',
+                'phone' => 'string|max:25|unique:users',
+                'password' => 'string|confirmed|min:6',
             ]);
 
             if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
+                return response()->json($validator->errors()->toJson(), 401);
             }
 
             $user = User::findOrFail($id);
 
-            $user->update($request->all());
+            $user->update($validator->validated());
 
             return response()->json([
                 'message' => 'User successfully updated',

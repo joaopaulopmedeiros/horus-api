@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use \App\Http\Controllers\API\UserController;
+use \App\Http\Controllers\API\CvliController;
+use \App\Http\Controllers\API\TypeCvliController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,5 +33,14 @@ Route::group([
     Route::get('{id}', [UserController::class, 'show']);
     Route::put('{id}', [UserController::class, 'update']);
     Route::delete('{id}', [UserController::class, 'destroy']);
+});
+
+Route::group([
+    'prefix' => 'cvlis'
+], function ($router) {
+    Route::get('types', [TypeCvliController::class, 'index']);
+    Route::post('types', [TypeCvliController::class, 'store']);
+    Route::get('', [CvliController::class, 'index']);
+    Route::post('', [CvliController::class, 'store']);
 });
 

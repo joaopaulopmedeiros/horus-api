@@ -22,11 +22,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'original_document',
-        'phone_number',
-        'latitude',
-        'longitude',
-        'role_id'
+        'cpf',
+        'phone',
     ];
 
     /**
@@ -74,11 +71,13 @@ class User extends Authenticatable implements JWTSubject
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'original_document' => $this->original_document,
-            'latitude' => $this->latitude,
-            'phone_number' => $this->phone_number,
-            'longitude' =>$this->longitude,
+            'cpf' => $this->cpf,
+            'phone' => $this->phone,
         ];
     }
 
+    public function cvlis()
+    {
+        return $this->hasMany(Cvli::class, 'users_id');
+    }
 }
