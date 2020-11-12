@@ -7,6 +7,7 @@ use App\Models\CvliFile;
 use Illuminate\Http\Request;
 use App\Models\Cvli;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -17,10 +18,10 @@ class CvliController extends Controller
      *
      * @return void
      */
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth:api');
-    }*/
+    }
 
     public function index() {
         try {
@@ -49,9 +50,19 @@ class CvliController extends Controller
 
             $cvli = Cvli::create($validator->validated());
 
+            $data = $request->only(['file']);
+
+            $data['file']
+                ->storeAs(
+                    "public/cvlis/{$cvli->id}",
+                    "file.{$data['file']->extension()}"
+                );
+
+            $url = url(Storage::url("public/cvlis/{$cvli->id}/file"));
+
             CvliFile::create([
                 'cvlis_id' => $cvli->id,
-                'path' => ''
+                'path' => $url
             ]);
 
             DB::commit();
