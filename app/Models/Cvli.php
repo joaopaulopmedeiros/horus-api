@@ -12,9 +12,9 @@ class Cvli extends Model
     protected $table = 'cvlis';
 
     protected $fillable = [
-      'cvlis_typed_id',
-      'stars',
+      'cvlis_types_id',
       'latitude',
+      'users_id',
       'longitude',
     ];
 }
