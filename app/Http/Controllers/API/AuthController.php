@@ -80,9 +80,14 @@ class AuthController extends Controller
 
             DB::commit();
 
+            $credentials = $request->only(['email', 'password']);
+
+            $token = auth('api')->attempt($credentials);
+
             return response()->json([
                 'message' => 'User successfully registered',
-                'user' => $user
+                'user' => $user,
+                'token' => $token
             ], 201);
 
         } catch (ValidationException $e) {
