@@ -66,7 +66,6 @@ class UserController extends Controller
                 'email' => 'string|email|max:100|unique:users',
                 'phone' => 'string|max:25|unique:users',
                 'password' => 'string|confirmed|min:6',
-                'role' => 'numeric'
             ]);
 
             if($validator->fails()){
