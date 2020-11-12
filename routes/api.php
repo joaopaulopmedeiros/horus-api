@@ -40,6 +40,7 @@ Route::group([
 ], function ($router) {
     Route::get('types', [TypeCvliController::class, 'index']);
     Route::post('types', [TypeCvliController::class, 'store']);
+    Route::get('', [CvliController::class, 'index']);
     Route::post('', [CvliController::class, 'store']);
 });
 
