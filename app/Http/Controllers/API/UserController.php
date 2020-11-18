@@ -47,6 +47,7 @@ class UserController extends Controller
     {
         try {
             $user = User::findOrFail($id);
+            $this->authorize('view', $user);
             return response()->json($user);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -63,6 +64,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            $user = User::findOrFail($id);
+
+            $this->authorize('update', $user);
+
             $validator = Validator::make($request->all(), [
                 'name' => 'string|between:2,100',
                 'email' => 'string|email|max:100|unique:users',
@@ -71,10 +76,8 @@ class UserController extends Controller
             ]);
 
             if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 401);
+                return response()->json(['error' => $validator->errors()->toJson()], 401);
             }
-
-            $user = User::findOrFail($id);
 
             $user->update($validator->validated());
 
@@ -98,6 +101,8 @@ class UserController extends Controller
     {
         try {
             $user = User::findOrFail($id);
+
+            $this->authorize('delete', $user);
 
             $user->delete();
 
