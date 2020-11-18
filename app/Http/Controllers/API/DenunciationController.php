@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Denunciation;
+use App\Models\DenunciationHasCriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,7 +37,8 @@ class DenunciationController extends Controller
             $validator = Validator::make($request->all(), [
                 'cvlis_id' => 'required|numeric',
                 'users_id' => 'required|numeric',
-                'criteria' => '',
+                'criteria' => 'sometimes',
+                'description' => 'sometimes|string'
             ]);
 
             if ($validator->fails()) {
@@ -47,7 +49,16 @@ class DenunciationController extends Controller
 
             $denunciation = Denunciation::create($validator->validated());
 
-            DB::insert();
+            $criteria = $request->criteria;
+
+            if($criteria) {
+                foreach($criteria as $item) {
+                    DenunciationHasCriteria::create([
+                        'denunciations_id' => $denunciation->id,
+                        'denunciations_criteria_id' => $item,
+                    ]);
+                }
+            }
 
             DB::commit();
 
@@ -55,6 +66,9 @@ class DenunciationController extends Controller
                 'message' => 'Denunciation successfully registered',
                 'denunciation' => $denunciation,
             ], 201);
+        }  catch (\Throwable $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**
