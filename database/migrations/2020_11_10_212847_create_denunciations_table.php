@@ -15,9 +15,14 @@ class CreateDenunciationsTable extends Migration
     {
         Schema::create('denunciations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('denunciations_criteria_id')->nullable();
             $table->longText('description')->nullable();
             $table->timestamps();
+
+            $table->unsignedBigInteger('users_id')->nullable();
+            $table->unsignedBigInteger('cvlis_id')->nullable();
+
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('cvlis_id')->references('id')->on('cvlis');
         });
     }
 
