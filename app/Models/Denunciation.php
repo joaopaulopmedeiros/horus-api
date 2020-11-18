@@ -14,4 +14,8 @@ class Denunciation extends Model
         'cvlis_id',
     ];
 
+    public function criterias()
+    {
+        return $this->belongsToMany(Cvli::class, 'denunciations_has_criteria', 'denunciations_id', 'denunciations_criteria_id');
+    }
 }
