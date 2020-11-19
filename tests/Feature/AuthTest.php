@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
 use Tests\TestCase;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Models\User;
 
 class AuthTest extends TestCase
 {
@@ -58,6 +60,11 @@ class AuthTest extends TestCase
      */
     public function user_can_get_his_info_on_app(array $user)
     {
-        $this->assertTrue(true);
+        $model = User::where('email', $user['email'])->first();
+        $token = JWTAuth::fromUser($model);
+
+        $response = $this->json('POST', $this->base_url . "/user?token=" . $token, []);
+
+        $response->assertStatus(200);
     }
 }
