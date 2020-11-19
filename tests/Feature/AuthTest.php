@@ -29,7 +29,7 @@ class AuthTest extends TestCase
             'role' => 2
         ];
 
-        $response = $this->json('POST', $this->base_url . "/register", $user);
+        $response = $this->json('POST', $this->base_url . '/register', $user);
 
         $response->assertStatus(201);
 
@@ -44,8 +44,20 @@ class AuthTest extends TestCase
      */
     public function user_can_login_on_app(array $user)
     {
-        $response = $this->json('POST', $this->base_url . "/login", $user);
+        $response = $this->json('POST', $this->base_url . '/login', $user);
 
         $response->assertStatus(200)->assertJsonStructure(['access_token', 'token_type', 'expires_in']);
+
+        return $user;
+    }
+
+    /**
+     * @depends user_can_login_on_app
+     * @test
+     * @param array $user
+     */
+    public function user_can_get_his_info_on_app(array $user)
+    {
+        $this->assertTrue(true);
     }
 }
