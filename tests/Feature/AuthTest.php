@@ -66,5 +66,19 @@ class AuthTest extends TestCase
         $response = $this->json('POST', $this->base_url . "/user?token=" . $token, []);
 
         $response->assertStatus(200);
+
+        return $token;
+    }
+
+    /**
+     * @depends user_can_get_his_info_on_app
+     * @test
+     * @param string $token
+     */
+    public function user_can_logout_on_app(string $token)
+    {
+        $response = $this->json('POST', $this->base_url . "/logout?token=" . $token, []);
+
+        $response->assertStatus(200);
     }
 }
