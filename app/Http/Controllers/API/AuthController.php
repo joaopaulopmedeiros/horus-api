@@ -63,7 +63,7 @@ class AuthController extends Controller
             ]);
 
             if($validator->fails()){
-                return response()->json($validator->errors()->toJson(), 400);
+                return response()->json(["error" => $validator->errors()->toJson()], 400);
             }
 
             DB::beginTransaction();
@@ -74,8 +74,8 @@ class AuthController extends Controller
             ));
 
             UserRole::create([
-                'users_id' => $user->id,
-                'roles_id' => $request->role,
+                'user_id' => $user->id,
+                'role_id' => $request->role,
             ]);
 
             DB::commit();

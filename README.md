@@ -26,6 +26,6 @@ Once You have configured your environment, You are able to:
 - [Laravel](https://laravel.com/docs/8.x)
 
 ### Curious about our database structure? Check this out:
-- [SUSI's DER](/.github/der.svg)
+- [SUSI's DER](/.github/der.png)
 
 Cya, folks!

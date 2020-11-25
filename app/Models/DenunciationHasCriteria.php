@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRole extends Model
+class DenunciationHasCriteria extends Model
 {
     use HasFactory;
 
-    protected $table = 'users_roles';
+    protected $table = 'denunciations_has_criteria';
 
     protected $fillable = [
-        'user_id',
-        'role_id',
+        'denunciation_id',
+        'denunciation_criteria_id',
     ];
 }

@@ -38,32 +38,34 @@ class CvliController extends Controller
                 'file' => 'mimes:jpeg,png,svg,mpeg,ogg,mp4,webm,3gp,mov,flv,avi,wmv,ts',
                 'longitude' => 'required|numeric',
                 'latitude' => 'required|numeric',
-                'cvlis_types_id' => 'required|numeric',
-                'users_id' => 'required|numeric',
+                'cvli_type_id' => 'required|numeric',
+                'user_id' => 'required|numeric',
             ]);
 
             if ($validator->fails()) {
-                return response()->json($validator->errors()->toJson(), 400);
+                return response()->json(['error' => $validator->errors()->toJson()], 401);
             }
 
             DB::beginTransaction();
 
             $cvli = Cvli::create($validator->validated());
 
-            $data = $request->only(['file']);
+            if($request->has('file')){
+                $data = $request->only(['file']);
 
-            $data['file']
-                ->storeAs(
-                    "public/cvlis/{$cvli->id}",
-                    "file.{$data['file']->extension()}"
-                );
+                $data['file']
+                    ->storeAs(
+                        "public/cvlis/{$cvli->id}",
+                        "file.{$data['file']->extension()}"
+                    );
 
-            $url = url(Storage::url("public/cvlis/{$cvli->id}/file"));
+                $url = url(Storage::url("public/cvlis/{$cvli->id}/file"));
 
-            CvliFile::create([
-                'cvlis_id' => $cvli->id,
-                'path' => $url
-            ]);
+                CvliFile::create([
+                    'cvli_id' => $cvli->id,
+                    'path' => $url
+                ]);
+            }
 
             DB::commit();
 

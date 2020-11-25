@@ -14,8 +14,8 @@ class AddUsersForeignKeyToCvlisTable extends Migration
     public function up()
     {
         Schema::table('cvlis', function (Blueprint $table) {
-            $table->unsignedBigInteger('users_id');
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -27,7 +27,7 @@ class AddUsersForeignKeyToCvlisTable extends Migration
     public function down()
     {
         Schema::table('cvlis', function (Blueprint $table) {
-            $table->dropForeign('users_id');
+            $table->dropForeign('user_id');
         });
     }
 }
