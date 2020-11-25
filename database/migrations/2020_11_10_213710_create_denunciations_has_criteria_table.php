@@ -16,10 +16,10 @@ class CreateDenunciationsHasCriteriaTable extends Migration
         Schema::create('denunciations_has_criteria', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('denunciations_id');
-            $table->foreign('denunciations_id')->references('id')->on('denunciations');
-            $table->unsignedBigInteger('denunciations_criteria_id');
-            $table->foreign('denunciations_criteria_id')->references('id')->on('denunciations_criteria');
+            $table->unsignedBigInteger('denunciation_id');
+            $table->foreign('denunciation_id')->references('id')->on('denunciations');
+            $table->unsignedBigInteger('denunciation_criteria_id');
+            $table->foreign('denunciation_criteria_id')->references('id')->on('denunciations_criteria');
 
             $table->timestamps();
         });

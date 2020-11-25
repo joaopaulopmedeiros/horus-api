@@ -13,6 +13,6 @@ class CvliFile extends Model
 
     protected $fillable = [
         'path',
-        'cvlis_id',
+        'cvli_id',
     ];
 }

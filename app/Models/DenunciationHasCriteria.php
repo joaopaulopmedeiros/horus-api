@@ -12,7 +12,7 @@ class DenunciationHasCriteria extends Model
     protected $table = 'denunciations_has_criteria';
 
     protected $fillable = [
-        'denunciations_id',
-        'denunciations_criteria_id',
+        'denunciation_id',
+        'denunciation_criteria_id',
     ];
 }

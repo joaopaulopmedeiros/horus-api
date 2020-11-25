@@ -35,8 +35,8 @@ class DenunciationController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'cvlis_id' => 'required|numeric',
-                'users_id' => 'required|numeric',
+                'cvli_id' => 'required|numeric',
+                'user_id' => 'required|numeric',
                 'criteria' => 'sometimes',
                 'description' => 'sometimes|string'
             ]);
@@ -54,8 +54,8 @@ class DenunciationController extends Controller
             if($criteria) {
                 foreach($criteria as $item) {
                     DenunciationHasCriteria::create([
-                        'denunciations_id' => $denunciation->id,
-                        'denunciations_criteria_id' => $item,
+                        'denunciation_id' => $denunciation->id,
+                        'denunciation_criteria_id' => $item,
                     ]);
                 }
             }

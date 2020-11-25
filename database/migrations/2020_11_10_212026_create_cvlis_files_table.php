@@ -18,8 +18,8 @@ class CreateCvlisFilesTable extends Migration
             $table->string('path');
             $table->timestamps();
 
-            $table->unsignedBigInteger('cvlis_id');
-            $table->foreign('cvlis_id')->references('id')->on('cvlis');
+            $table->unsignedBigInteger('cvli_id');
+            $table->foreign('cvli_id')->references('id')->on('cvlis');
         });
     }
 

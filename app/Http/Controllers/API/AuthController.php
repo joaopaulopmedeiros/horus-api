@@ -74,8 +74,8 @@ class AuthController extends Controller
             ));
 
             UserRole::create([
-                'users_id' => $user->id,
-                'roles_id' => $request->role,
+                'user_id' => $user->id,
+                'role_id' => $request->role,
             ]);
 
             DB::commit();

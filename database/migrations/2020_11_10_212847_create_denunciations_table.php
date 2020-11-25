@@ -18,11 +18,11 @@ class CreateDenunciationsTable extends Migration
             $table->longText('description')->nullable();
             $table->timestamps();
 
-            $table->unsignedBigInteger('users_id')->nullable();
-            $table->unsignedBigInteger('cvlis_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('cvli_id')->nullable();
 
-            $table->foreign('users_id')->references('id')->on('users');
-            $table->foreign('cvlis_id')->references('id')->on('cvlis');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('cvli_id')->references('id')->on('cvlis');
         });
     }
 

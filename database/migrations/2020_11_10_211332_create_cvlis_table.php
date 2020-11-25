@@ -20,8 +20,8 @@ class CreateCvlisTable extends Migration
             $table->float('stars', 3, 2)->default(1);
             $table->timestamps();
 
-            $table->unsignedBigInteger('cvlis_types_id');
-            $table->foreign('cvlis_types_id')->references('id')->on('cvlis_types');
+            $table->unsignedBigInteger('cvli_type_id');
+            $table->foreign('cvli_type_id')->references('id')->on('cvlis_types');
         });
     }
 

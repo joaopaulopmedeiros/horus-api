@@ -46,8 +46,8 @@ class CvliTest extends TestCase
         $cvli = [
             'latitude' => $faker->latitude,
             'longitude' => $faker->longitude,
-            'cvlis_types_id' => $type_cvli->id,
-            'users_id' => $user->id,
+            'cvli_type_id' => $type_cvli->id,
+            'user_id' => $user->id,
         ];
 
         $response = $this->post("$this->base_url/cvlis/?token={$token}", $cvli);

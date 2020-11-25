@@ -28,7 +28,7 @@ class RoleTest extends TestCase
     public function retrieveUser(int $role): User
     {
         return User::whereHas('role', function(Builder $query) use ($role) {
-            $query->where('users_roles.roles_id', '=', $role);
+            $query->where('users_roles.role_id', '=', $role);
         })->inRandomOrder()->first();
     }
 }
