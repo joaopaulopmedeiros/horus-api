@@ -6,6 +6,7 @@ SUSI's API.
 ## 🚀 Technologies
 - [Laravel](https://laravel.com/docs/8.x)
 - [jwt-auth](https://jwt-auth.readthedocs.io/en/docs/quick-start/) 
+- [Insomnia](https://insomnia.rest/)
 
 ## How to install it?
 - Clone this project typing: `git clone <repo_link>`
@@ -26,6 +27,6 @@ Once You have configured your environment, You are able to:
 - [Laravel](https://laravel.com/docs/8.x)
 
 ### Curious about our database structure? Check this out:
-- [SUSI's DER](/.github/der.png)
+- [SUSI's DER](/.gitlab/der.png)
 
 Cya, folks!
