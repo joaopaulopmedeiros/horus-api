@@ -26,7 +26,13 @@ Once You have configured your environment, You are able to:
 - [NPM](https://docs.npmjs.com/)
 - [Laravel](https://laravel.com/docs/8.x)
 
-### Curious about our database structure? Check this out:
+### What about our database structure? Check this out:
 - [SUSI's DER](/.gitlab/der.png)
+
+### Keep studying
+Documentation really matters, but you can also get up to date with:
+- [PHP Introductory Course](https://laracasts.com/series/php-for-beginners)
+- [Laravel Tips](https://www.youtube.com/playlist?list=PLi_gvjv-JgXqop7hgVKZMGPiT9rUYy1sr)
+- [Laravel Community](https://laracasts.com/discuss)
 
 Cya, folks!
