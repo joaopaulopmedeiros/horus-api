@@ -50,20 +50,22 @@ class CvliController extends Controller
 
             $cvli = Cvli::create($validator->validated());
 
-            $data = $request->only(['file']);
+            if($request->has('file')){
+                $data = $request->only(['file']);
 
-            $data['file']
-                ->storeAs(
-                    "public/cvlis/{$cvli->id}",
-                    "file.{$data['file']->extension()}"
-                );
+                $data['file']
+                    ->storeAs(
+                        "public/cvlis/{$cvli->id}",
+                        "file.{$data['file']->extension()}"
+                    );
 
-            $url = url(Storage::url("public/cvlis/{$cvli->id}/file"));
+                $url = url(Storage::url("public/cvlis/{$cvli->id}/file"));
 
-            CvliFile::create([
-                'cvlis_id' => $cvli->id,
-                'path' => $url
-            ]);
+                CvliFile::create([
+                    'cvlis_id' => $cvli->id,
+                    'path' => $url
+                ]);
+            }
 
             DB::commit();
 
