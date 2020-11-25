@@ -1,7 +1,7 @@
 # susi-api
 
 ## 📗 Description
-SUSI's API. 
+SUSI's API - a safe and powerful back-end made for credentiated HTTP clients. 
 
 ## 🚀 Technologies
 - [Laravel](https://laravel.com/docs/8.x)
@@ -28,6 +28,9 @@ Once You have configured your environment, You are able to:
 
 ### What about our database structure? Check this out:
 - [SUSI's DER](/.gitlab/der.png)
+
+### Design project
+- [Visit Figma](https://www.figma.com/file/Sy7qXkAI2Ve0MZUV4DXAWV/Ui%2F-Telas-SUSI?node-id=0%3A1)
 
 ### Keep studying
 Documentation really matters, but you can also get up to date with:
