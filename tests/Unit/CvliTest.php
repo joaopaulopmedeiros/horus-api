@@ -17,7 +17,7 @@ class CvliTest extends TestCase
      * @test
      * @return void
      */
-    public function any_user_should_see_cvlis()
+    public function any_user_must_see_cvlis()
     {
         $user = User::inRandomOrder()->first();;
 
@@ -33,7 +33,7 @@ class CvliTest extends TestCase
      * @test
      * @return void
      */
-    public function any_user_should_store_cvlis()
+    public function any_user_must_store_cvlis()
     {
         $user = User::inRandomOrder()->first();
 

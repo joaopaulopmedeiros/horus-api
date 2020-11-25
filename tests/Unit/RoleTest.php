@@ -14,7 +14,7 @@ class RoleTest extends TestCase
      * @test
      * @return void
      */
-    public function normal_user_should_not_see_roles()
+    public function normal_user_must_not_see_roles()
     {
         $user = $this->retrieveUser(2);
 

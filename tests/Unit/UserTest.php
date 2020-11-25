@@ -17,7 +17,7 @@ class UserTest extends TestCase
      * @test
      * @return void
      */
-    public function normal_user_should_not_see_the_others()
+    public function normal_user_must_not_see_the_others()
     {
         $user = $this->retrieveUser(2);
 
@@ -32,7 +32,7 @@ class UserTest extends TestCase
      * @test
      * @return void
      */
-    public function normal_user_should_not_delete_the_others_or_himself()
+    public function normal_user_must_not_delete_the_others_or_himself()
     {
         $user = $this->retrieveUser(2);
 
@@ -52,7 +52,7 @@ class UserTest extends TestCase
      * @test
      * @return void
      */
-    public function any_user_should_not_update_a_different_user()
+    public function any_user_must_not_update_a_different_user()
     {
         $user = $this->retrieveUser(2);
 
@@ -78,7 +78,7 @@ class UserTest extends TestCase
      * @test
      * @return void
      */
-    public function normal_user_should_see_only_himself()
+    public function normal_user_must_see_only_himself()
     {
         $user = $this->retrieveUser(2);
 
