@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -20,6 +21,7 @@ class RoleController extends Controller
 
     public function index(){
         try {
+            $this->authorize('viewAny', Auth::user());
             $users = Role::paginate(10);
             return response()->json($users);
         } catch (\Throwable $e) {
