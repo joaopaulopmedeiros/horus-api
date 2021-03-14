@@ -19,7 +19,7 @@ class CvliSeeder extends Seeder
         $cvlis = [
             [
                 'title' => 'Roubo de veículo',
-                'description' => 'Ocorrido à luz do dia na Zona Leste. Veículo celta preto.',
+                'description' => 'Ocorrido à luz do dia na Zona Norte. Veículo celta preto.',
                 'latitude' => -5.7490999,
                 'longitude' => -35.262599,
                 'verified' => true,
