@@ -16,6 +16,7 @@ class Cvli extends Model
       'latitude',
       'user_id',
       'longitude',
-      'title'
+      'title',
+      'description'
     ];
 }

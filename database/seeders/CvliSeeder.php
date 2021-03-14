@@ -19,6 +19,7 @@ class CvliSeeder extends Seeder
         $cvlis = [
             [
                 'title' => 'Crime 01',
+                'description' => 'Lorem Ipsum is simply text of the printing and typesetting industry.',
                 'latitude' => -5.7490999,
                 'longitude' => -35.262599,
                 'stars' => 1,
@@ -27,6 +28,7 @@ class CvliSeeder extends Seeder
             ],
             [
                 'title' => 'Crime 02',
+                'description' => 'Lorem Ipsum is simply text of the printing and typesetting industry.',
                 'latitude' => -5.8450935,
                 'longitude' => -35.2697694,
                 'stars' => 2,
