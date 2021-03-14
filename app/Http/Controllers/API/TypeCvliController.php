@@ -17,13 +17,16 @@ class TypeCvliController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware(
+            'auth:api',
+            ['except' => ['index']]
+        );
     }
 
     public function index(){
         try {
-            $users = TypeCvli::paginate(10);
-            return response()->json($users);
+            $typecvlis = TypeCvli::paginate(10);
+            return response()->json($typecvlis);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -33,8 +36,8 @@ class TypeCvliController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'name' => 'string|between:2,100',
-                'image' => 'mimes:jpeg,png,svg'
+                'name' => 'required|string|between:2,100',
+                'image' => 'required|mimes:jpeg,png,svg'
             ]);
 
             if($validator->fails()){
@@ -49,12 +52,12 @@ class TypeCvliController extends Controller
 
             $url = url(Storage::url("public/types_cvlis/{$formatName}"));
 
-            $cvli = TypeCvli::create([
+            $typeCvli = TypeCvli::create([
                 'name' => $data['name'],
                 'image' => $url,
             ]);
 
-            return response()->json($cvli, 201);
+            return response()->json($typeCvli, 201);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -62,6 +65,7 @@ class TypeCvliController extends Controller
 
     protected function formatImageName($image, $name){
         $name = join("-", explode(" ", $name));
+        $name = strtolower($name);
         return "{$name}.{$image->extension()}";
     }
 
