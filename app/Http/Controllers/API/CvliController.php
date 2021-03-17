@@ -26,10 +26,14 @@ class CvliController extends Controller
         );
     }
 
-    public function index() {
+    public function index(Request $request) {
         try {
-            $users = Cvli::paginate(10);
-            return response()->json($users);
+            if($request->latitude && $request->longitude) {
+                $cvlis = $this->getByNearestPosition($request, $refDistance = 50);
+            } else {
+                $cvlis = Cvli::paginate(10);
+            }
+            return response()->json($cvlis);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -97,5 +101,29 @@ class CvliController extends Controller
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
+    }
+
+    private function getByNearestPosition($request, $refDistance)
+    {
+        $validator = Validator::make($request->all(), [
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->toJson()], 400);
+        }
+
+        $cvlis = Cvli::select('*',
+            DB::raw(sprintf(
+            '(6371 * acos(cos(radians(%1$.7f)) * cos(radians(latitude)) * cos(radians(longitude) - radians(%2$.7f)) + sin(radians(%1$.7f)) * sin(radians(latitude)))) AS distance',
+            $request->input('latitude'),
+            $request->input('longitude')
+        )))
+        ->having('distance', '<', $refDistance)
+        ->orderBy('distance', 'asc')
+        ->get();
+
+        return $cvlis;
     }
 }
