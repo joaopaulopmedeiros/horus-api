@@ -34,7 +34,11 @@ class AuthController extends Controller
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
 
-            return $this->respondWithToken($token);
+            $user = User::where('email', $request->input('email'))->with('cvlis')->first();
+
+            $result = array_merge(['user'=> $user],$this->respondWithToken($token));
+
+            return response()->json($result);
         } catch (\Throwable $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -110,11 +114,11 @@ class AuthController extends Controller
 
     protected function respondWithToken($token)
     {
-        return response()->json([
+        return [
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => 60*60
-        ]);
+        ];
     }
 
     public function unauthorized() {
