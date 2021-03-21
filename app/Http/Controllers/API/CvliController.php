@@ -30,7 +30,11 @@ class CvliController extends Controller
         try {
             if($request->latitude && $request->longitude) {
                 $cvlis = $this->getByNearestPosition($request, $refDistance = 50);
-            } else {
+            }
+            else if($request->type){
+                $cvlis = Cvli::orderBy('created_at', 'desc')->where('cvli_type_id', $request->type)->paginate(10);
+            }
+            else {
                 $cvlis = Cvli::orderBy('created_at', 'desc')->paginate(10);
             }
             return response()->json($cvlis);
