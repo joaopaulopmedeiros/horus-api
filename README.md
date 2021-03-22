@@ -6,7 +6,7 @@
   <a href="#">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#">Como Instalar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#">Responsabilidade</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#">Aqui você encontra</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="javscript:void(0)">Continue Estudando</a>
 </div>
 
@@ -44,12 +44,13 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Uma vez configurado o ambiente, você pode executar:
     - `php artisan serve` 😃💘🌟
 
-## 🧠 Responsabilidade
+## 🧠 Aqui você encontra
 
 - Regra de negócios;
 - Serviços;
 - Conexão e operações com banco de dados;
 - Testes unitários.
+- [DER](.gitlab/der.png)
 
 
 ## 😀Continue Estudando
