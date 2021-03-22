@@ -51,6 +51,8 @@ class CvliController extends Controller
                 'latitude' => 'required|numeric',
                 'cvli_type_id' => 'required|numeric',
                 'user_id' => 'required|numeric',
+                'title' => 'required',
+                'description' => 'required'
             ]);
 
             if ($validator->fails()) {
