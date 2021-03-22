@@ -49,8 +49,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Regra de negócios;
 - Serviços;
 - Conexão e operações com banco de dados;
-- Testes unitários.
-- [DER](.gitlab/der.png)
+- Testes unitários;
+- [Testes manuais](./idea/exports);
+- [DER](.gitlab/der.png).
 
 
 ## 😀Continue Estudando
