@@ -6,7 +6,7 @@
   <a href="#">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#">Como Instalar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#">Responsabilidade</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="javscript:void(0)">Continue Estudando</a>
 </div>
 
@@ -44,7 +44,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Uma vez configurado o ambiente, você pode executar:
     - `php artisan serve` 😃💘🌟
 
-## 🧠 Features
+## 🧠 Responsabilidade
 
 - Regra de negócios;
 - Serviços;
