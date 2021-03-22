@@ -50,7 +50,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Serviços;
 - Conexão e operações com banco de dados;
 - Testes unitários;
-- [Testes manuais](./idea/exports);
+- [Testes manuais](.idea/exports);
 - [DER](.gitlab/der.png).
 
 
