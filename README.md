@@ -12,8 +12,6 @@
 
 <div align="center">
  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=rgba(20,119,248,0.8)&labelColor=000000" alt="PRs welcome!" />
-
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=rgba(20,119,248,0.8)&labelColor=000000">
 </div>
 
 <br>
