@@ -18,7 +18,7 @@
 
 ## 💻 Projeto
 
-O horus-api é um poderosa e segura REST API para clientes HTTP credenciados.
+O horus-api é uma poderosa e segura REST API para clientes HTTP credenciados.
 
 ## 🚀 Tecnologias
 
